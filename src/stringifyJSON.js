@@ -37,13 +37,16 @@ var stringifyJSON = function(obj) {
     var result = '{';
     var count = 0;
     for (var key in obj) {
-      var stringKey = stringifyJSON(key);
-      var stringValue = stringifyJSON(obj[key]);
-      count++;
-      if (count !== Object.keys(obj).length) {
-        result += stringKey + ':' + stringValue + ',';
+      if (obj[key] === undefined || typeof obj[key] === 'function') {
       } else {
-        result += stringKey + ':' + stringValue;
+        var stringKey = stringifyJSON(key);
+        var stringValue = stringifyJSON(obj[key]);
+        count++;
+        if (count !== Object.keys(obj).length) {
+          result += stringKey + ':' + stringValue + ',';
+        } else {
+          result += stringKey + ':' + stringValue;
+        }
       }
     }
     return result + '}';
