@@ -22,9 +22,9 @@ var stringifyJSON = function(obj) {
   }
 
   if (Array.isArray(obj)) {
-    var result='[';
-    for (var i=0; i<obj.length; i++) {
-      if (i!==obj.length-1) {
+    var result = '[';
+    for (var i = 0; i < obj.length; i++) {
+      if (i !== obj.length - 1 ) {
         result += stringifyJSON(obj[i]) + ',';
       } else {
         result += stringifyJSON(obj[i]);
